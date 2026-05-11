@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>Atmospheric Background</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { width: 700px; height: 240px; }
+  .stage { position: relative; height: 180px; border-radius: 18px; overflow: hidden;
+           border: 1px solid rgba(255,255,255,0.85); box-shadow: var(--shadow-card-md); }
+  .stage .atmosphere { position: absolute; inset: 0; }
+  .stops { position: absolute; left: 16px; bottom: 12px; display: flex; gap: 8px; align-items: center; }
+  .stop { display: flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--fg-1);
+          background: rgba(255,255,255,0.7); border-radius: 999px; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.85); }
+  .dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(15,40,48,0.15); }
+  .formula { position: absolute; right: 16px; top: 12px;
+             font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--fg-2);
+             background: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.85);
+             border-radius: 8px; padding: 6px 10px; }
+</style></head>
+<body>
+  <div style="background:#fff; padding:18px;">
+    <div class="stage">
+      <div class="atmosphere"></div>
+      <div class="formula">radial × radial × linear-gradient 135°</div>
+      <div class="stops">
+        <div class="stop"><span class="dot" style="background:#dce8f0"></span>#dce8f0</div>
+        <div class="stop"><span class="dot" style="background:#eef5f0"></span>#eef5f0</div>
+        <div class="stop"><span class="dot" style="background:#c8e8d4"></span>#c8e8d4</div>
+      </div>
+    </div>
+  </div>
+</body></html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>Big Card with Tag</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { width: 700px; height: 240px; font-family: 'Pretendard','Noto Sans KR',sans-serif; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .big-card {
+    background: rgba(255,255,255,0.65); backdrop-filter: blur(14px);
+    border-radius: 20px; padding: 24px 28px;
+    border: 1px solid var(--glass-border); box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+  .tag {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.10em;
+    background: rgba(26,122,80,0.12); color: #1a7a50; border-radius: 6px;
+    padding: 4px 10px; margin-bottom: 12px; text-transform: uppercase;
+  }
+  h3 { font-size: 16px; font-weight: 700; color: var(--fg-1); margin: 0 0 10px; }
+  ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  li { font-size: 12.5px; color: rgba(15,40,48,0.65); line-height: 1.55; display: flex; gap: 8px; font-weight: 300; }
+  li::before { content:''; width: 5px; height: 5px; border-radius: 50%; background:#1a7a50; margin-top: 6px; flex-shrink:0; }
+</style></head>
+<body>
+  <div class="atmosphere"></div>
+  <div class="card-pad">
+    <div class="grid">
+      <div class="big-card">
+        <div class="tag">Research Agent</div>
+        <h3>정보 수집 & 분석</h3>
+        <ul>
+          <li>시장 동향·경쟁사 정보 자동 수집</li>
+          <li>보고서 초안을 AI가 구조화하여 제공</li>
+          <li>요약 대시보드 생성</li>
+        </ul>
+      </div>
+      <div class="big-card">
+        <div class="tag">Decision Agent</div>
+        <h3>의사결정 지원</h3>
+        <ul>
+          <li>복잡한 시나리오 시뮬레이션</li>
+          <li>리스크·수익성 분석 자동화</li>
+          <li>대안 제시 및 추천</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body></html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>Timeline Item</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { width: 700px; height: 220px; font-family: 'Pretendard','Noto Sans KR',sans-serif; }
+  .timeline { display:flex; flex-direction: column; }
+  .timeline-item { display: flex; align-items: stretch; gap: 0; }
+  .left { width: 100px; padding: 16px 20px 16px 0; text-align: right; flex-shrink: 0; }
+  .month { font-size: 13px; font-weight: 700; color: #1a7a50; }
+  .week  { font-size: 11px; color: rgba(15,40,48,0.4); font-weight: 300; }
+  .center { width: 36px; display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg,#1a7a50,#2db88a); margin-top: 20px; box-shadow: 0 0 0 3px rgba(26,122,80,0.15); }
+  .line { flex: 1; width: 2px; background: linear-gradient(180deg, rgba(26,122,80,0.3), rgba(26,122,80,0.05)); }
+  .right { flex: 1; padding: 12px 0 16px 14px; }
+  .tcard { background: rgba(255,255,255,0.62); backdrop-filter: blur(12px); border-radius: 14px; padding: 14px 18px; border: 1px solid var(--glass-border); }
+  .tcard h4 { font-size: 14px; font-weight: 700; color: var(--fg-1); margin: 0 0 4px; }
+  .tcard p { font-size: 12px; color: rgba(15,40,48,0.55); line-height: 1.6; margin: 0; font-weight: 300; }
+</style></head>
+<body>
+  <div class="atmosphere"></div>
+  <div class="card-pad">
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="left"><div class="month">5월</div><div class="week">1~2주차</div></div>
+        <div class="center"><div class="dot"></div><div class="line"></div></div>
+        <div class="right">
+          <div class="tcard"><h4>AI 기초 & 프롬프트 엔지니어링</h4><p>LLM 작동 원리 · 프롬프트 설계 · 워크숍</p></div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="left"><div class="month">5월</div><div class="week">3~4주차</div></div>
+        <div class="center"><div class="dot"></div></div>
+        <div class="right">
+          <div class="tcard"><h4>AI 에이전트 실습</h4><p>Research · Writing 에이전트 직접 설계</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body></html>

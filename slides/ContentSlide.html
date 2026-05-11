@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>Content Slide</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin:0; padding:0; }
+  body { font-family: var(--font-sans); width: 1280px; height: 720px; position: relative; overflow: hidden; background: var(--bg-page); }
+  .bg { position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 20% 10%, rgba(180,210,230,0.55) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 70% at 85% 85%, rgba(100,185,150,0.50) 0%, transparent 55%),
+      linear-gradient(135deg, #dce8f0 0%, #eef5f0 45%, #c8e8d4 100%); }
+  .stage { position: relative; z-index: 1; padding: 90px 100px; }
+  .label { font-size: 14px; font-weight: 700; letter-spacing: 0.14em; color: #1a7a50; text-transform: uppercase; margin-bottom: 12px; }
+  .title { font-size: 44px; font-weight: 700; color: var(--fg-1); letter-spacing: -0.02em; margin-bottom: 10px; line-height: 1.2; }
+  .subtitle { font-size: 18px; color: rgba(15,40,48,0.5); font-weight: 300; margin-bottom: 44px; }
+  .divider { width: 100%; height: 1px; background: linear-gradient(90deg, rgba(26,122,80,0.25), transparent); margin-bottom: 44px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .card { background: rgba(255,255,255,0.65); backdrop-filter: blur(14px); border-radius: 18px; padding: 30px 32px; border: 1px solid rgba(255,255,255,0.85); box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
+  .icon { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg,#1a7a50,#2db88a); display:flex; align-items:center; justify-content:center; margin-bottom: 18px; }
+  .icon svg { width: 22px; height: 22px; stroke: white; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  h3 { margin: 0 0 12px; font-size: 18px; font-weight: 700; color: var(--fg-1); }
+  p  { margin: 0; font-size: 15px; color: rgba(15,40,48,0.6); line-height: 1.7; font-weight: 300; }
+  .logo { position: absolute; bottom: 40px; left: 56px; font-size: 16px; font-weight: 700; letter-spacing: 0.08em; color: #1a3a4a; z-index:2; }
+  .logo span { color: #1a7a50; }
+  .pnum  { position: absolute; bottom: 40px; right: 56px; font-size: 14px; color: rgba(30,50,60,0.45); font-weight: 300; z-index:2; }
+</style></head>
+<body>
+  <div class="bg"></div>
+  <div class="stage">
+    <div class="label">Section 01</div>
+    <div class="title">교육 개요 및 방향성</div>
+    <div class="subtitle">AI 시대, 임원이 직접 경험하는 전환의 언어</div>
+    <div class="divider"></div>
+    <div class="grid">
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h3>프로그램 목적</h3>
+        <p>임원 레벨에서 AI를 단순 도구가 아닌 의사결정 파트너로 활용하는 역량을 내재화합니다.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <h3>핵심 철학</h3>
+        <p>도구 습득보다 AI 사고력 함양에 집중합니다. 생각의 방식을 바꾸는 것이 먼저입니다.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>대상 및 규모</h3>
+        <p>한솔그룹 임원진 대상, HCLP AX MBA 과정. 소규모 집중형으로 운영하여 실습 밀도를 높입니다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="logo">:<span>Hansol</span></div>
+  <div class="pnum">03 / 06</div>
+</body></html>

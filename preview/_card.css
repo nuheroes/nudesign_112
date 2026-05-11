@@ -1,0 +1,48 @@
+/* Shared card chrome for preview cards in the Design System tab.
+   Each card is ~700×<varies>px on an atmospheric bg. */
+@import url('../colors_and_type.css');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  color: var(--fg-1);
+  background: var(--bg-page);
+}
+
+body {
+  position: relative;
+  width: 700px;
+  min-height: 150px;
+  overflow: hidden;
+}
+
+.atmosphere {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 20% 10%, rgba(180,210,230,0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 70% at 85% 85%, rgba(100,185,150,0.50) 0%, transparent 55%),
+    linear-gradient(135deg, var(--bg-atmosphere-a) 0%, var(--bg-atmosphere-b) 45%, var(--bg-atmosphere-c) 100%);
+}
+
+.card-pad {
+  position: relative;
+  z-index: 1;
+  padding: 28px 32px;
+}
+
+.row { display: flex; gap: 14px; align-items: stretch; }
+.col { display: flex; flex-direction: column; gap: 14px; }
+
+/* Mini glass surface used inside several cards */
+.glass {
+  background: var(--glass-medium);
+  backdrop-filter: blur(var(--glass-blur-md));
+  -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-card-md);
+}

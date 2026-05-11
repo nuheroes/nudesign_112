@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>Glass Surfaces</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { width: 700px; height: 220px; }
+  .row { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+  .item { display: flex; flex-direction: column; gap: 10px; }
+  .surface { height: 110px; border-radius: 18px; border: 1px solid var(--glass-border); padding: 14px;
+             color: var(--fg-1); font-size: 12px; font-weight: 700; }
+  .meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--fg-2); line-height: 1.5; }
+  .meta b { color: var(--fg-1); font-weight: 700; display:block; }
+</style></head>
+<body>
+  <div class="atmosphere"></div>
+  <div class="card-pad">
+    <div class="row">
+      <div class="item">
+        <div class="surface" style="background: rgba(255,255,255,0.72); backdrop-filter: blur(20px); box-shadow: 0 8px 40px rgba(0,0,0,0.06);">Hero / Title</div>
+        <div class="meta"><b>glass-strong</b>rgba 255 / .72 · blur 20</div>
+      </div>
+      <div class="item">
+        <div class="surface" style="background: rgba(255,255,255,0.65); backdrop-filter: blur(14px); box-shadow: 0 4px 20px rgba(0,0,0,0.04);">Content card</div>
+        <div class="meta"><b>glass-medium</b>rgba 255 / .65 · blur 14</div>
+      </div>
+      <div class="item">
+        <div class="surface" style="background: rgba(255,255,255,0.62); backdrop-filter: blur(12px); box-shadow: 0 4px 16px rgba(0,0,0,0.04);">Timeline / list</div>
+        <div class="meta"><b>glass-soft</b>rgba 255 / .62 · blur 12</div>
+      </div>
+    </div>
+  </div>
+</body></html>

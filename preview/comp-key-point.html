@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>Key Point Item</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { width: 700px; height: 230px; font-family: 'Pretendard','Noto Sans KR',sans-serif; }
+  .key-points { display: flex; flex-direction: column; gap: 10px; }
+  .key { background: rgba(255,255,255,0.62); backdrop-filter: blur(14px);
+         border-radius: 16px; padding: 18px 24px; border: 1px solid var(--glass-border);
+         display: flex; align-items: center; gap: 22px; }
+  .num { font-size: 22px; font-weight: 900; color: rgba(26,122,80,0.22); width: 30px; flex-shrink: 0; }
+  .body h4 { font-size: 15px; font-weight: 700; color: var(--fg-1); margin: 0 0 4px; }
+  .body p  { font-size: 13px; color: rgba(15,40,48,0.55); line-height: 1.5; margin: 0; font-weight: 300; }
+  .badge { margin-left: auto; font-size: 11px; font-weight: 700;
+           background: rgba(26,122,80,0.10); color: #1a7a50; border-radius: 8px; padding: 6px 14px; flex-shrink: 0; }
+</style></head>
+<body>
+  <div class="atmosphere"></div>
+  <div class="card-pad">
+    <div class="key-points">
+      <div class="key">
+        <div class="num">01</div>
+        <div class="body"><h4>AI 자율 활용 역량 내재화</h4><p>임원 스스로 AI 에이전트를 운용하는 상태 도달</p></div>
+        <div class="badge">역량</div>
+      </div>
+      <div class="key">
+        <div class="num">02</div>
+        <div class="body"><h4>현업 적용 프로젝트 결과물</h4><p>실제 업무 프로세스 1개 이상을 AI로 자동화</p></div>
+        <div class="badge">산출물</div>
+      </div>
+    </div>
+  </div>
+</body></html>

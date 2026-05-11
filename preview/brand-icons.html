@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>Iconography</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { width: 700px; height: 200px; font-family: 'Pretendard','Noto Sans KR',sans-serif; }
+  .row { display: flex; gap: 14px; align-items: center; }
+  .icon-chip { width: 44px; height: 44px; border-radius: 12px;
+               background: linear-gradient(135deg,#1a7a50,#2db88a);
+               display: flex; align-items: center; justify-content: center; }
+  .icon-chip svg { width: 20px; height: 20px; stroke: white; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .icon-outline { width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,0.7);
+                  border: 1px solid var(--glass-border); display:flex; align-items:center; justify-content:center; }
+  .icon-outline svg { width: 20px; height: 20px; stroke: #1a7a50; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .meta { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--fg-2); margin-top: 14px; line-height: 1.5; }
+  .meta b { color: var(--fg-1); display:block; }
+</style></head>
+<body>
+  <div class="atmosphere"></div>
+  <div class="card-pad">
+    <div class="row">
+      <div class="icon-chip"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div class="icon-chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+      <div class="icon-chip"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+      <div class="icon-chip"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+      <div class="icon-outline"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="icon-outline"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+    </div>
+    <div class="meta"><b>Lucide-style outline · 2px stroke · round caps</b>Filled gradient chip 36–44px / outline on glass for navigation</div>
+  </div>
+</body></html>

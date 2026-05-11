@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>Title Slide</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin:0; padding:0; }
+  body { font-family: var(--font-sans); width: 1280px; height: 720px; position: relative; overflow: hidden; background: var(--bg-page); }
+  .bg { position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 20% 10%, rgba(180,210,230,0.55) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 70% at 85% 85%, rgba(100,185,150,0.50) 0%, transparent 55%),
+      linear-gradient(135deg, #dce8f0 0%, #eef5f0 45%, #c8e8d4 100%); }
+  .stage { position: relative; z-index: 1; height: 100%; display: flex; align-items: center; justify-content: center; }
+  .card { background: rgba(255,255,255,0.72); backdrop-filter: blur(20px);
+          border-radius: 28px; padding: 84px 130px; text-align: center;
+          box-shadow: 0 8px 40px rgba(0,0,0,0.06); border: 1px solid rgba(255,255,255,0.9); }
+  h1 { margin: 0; font-size: 56px; font-weight: 700; color: var(--fg-1); letter-spacing: -0.02em; }
+  .sub { margin-top: 18px; font-size: 19px; color: rgba(15,40,48,0.5); font-weight: 300; }
+  .logo { position: absolute; bottom: 40px; left: 56px; font-size: 16px; font-weight: 700; letter-spacing: 0.08em; color: #1a3a4a; z-index:2; }
+  .logo span { color: #1a7a50; }
+  .num  { position: absolute; bottom: 40px; right: 56px; font-size: 14px; color: rgba(30,50,60,0.45); font-weight: 300; z-index:2; }
+</style></head>
+<body>
+  <div class="bg"></div>
+  <div class="stage">
+    <div class="card">
+      <h1>HCLP 교육</h1>
+      <div class="sub">Hansol Corporate Leadership Program · AI Transformation Track</div>
+    </div>
+  </div>
+  <div class="logo">:<span>Hansol</span></div>
+  <div class="num">01 / 06</div>
+</body></html>

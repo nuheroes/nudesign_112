@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>Index Slide</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin:0; padding:0; }
+  body { font-family: var(--font-sans); width: 1280px; height: 720px; position: relative; overflow: hidden; background: var(--bg-page); }
+  .bg { position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 20% 10%, rgba(180,210,230,0.55) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 70% at 85% 85%, rgba(100,185,150,0.50) 0%, transparent 55%),
+      linear-gradient(135deg, #dce8f0 0%, #eef5f0 45%, #c8e8d4 100%); }
+  .stage { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 80px; }
+  .head { margin-bottom: 48px; }
+  .head h2 { margin:0; font-size: 36px; font-weight: 700; color: var(--fg-1); letter-spacing: -0.02em; }
+  .head .line { margin-top: 10px; width: 44px; height: 4px; background: linear-gradient(90deg,#1a7a50,#2db88a); border-radius: 2px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; width: 920px; }
+  .item { background: rgba(255,255,255,0.7); backdrop-filter: blur(16px); border-radius: 22px; padding: 32px 36px; border: 1px solid rgba(255,255,255,0.85); display: flex; gap: 22px; align-items: flex-start; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+  .num { font-size: 40px; font-weight: 900; color: rgba(26,122,80,0.18); line-height: 1; min-width: 40px; }
+  .title { font-size: 19px; font-weight: 700; color: var(--fg-1); margin-bottom: 6px; }
+  .desc  { font-size: 14px; color: rgba(15,40,48,0.5); font-weight: 300; line-height: 1.6; }
+  .logo { position: absolute; bottom: 40px; left: 56px; font-size: 16px; font-weight: 700; letter-spacing: 0.08em; color: #1a3a4a; z-index:2; }
+  .logo span { color: #1a7a50; }
+  .num-page { position: absolute; bottom: 40px; right: 56px; font-size: 14px; color: rgba(30,50,60,0.45); font-weight: 300; z-index:2; }
+</style></head>
+<body>
+  <div class="bg"></div>
+  <div class="stage">
+    <div class="head"><h2>목차</h2><div class="line"></div></div>
+    <div class="grid">
+      <div class="item"><div class="num">01</div><div><div class="title">교육 개요 및 방향성</div><div class="desc">HCLP AX MBA 프로그램 목적과 핵심 철학</div></div></div>
+      <div class="item"><div class="num">02</div><div><div class="title">AI 에이전트 실습 트랙</div><div class="desc">업무 자동화를 위한 4가지 활용법</div></div></div>
+      <div class="item"><div class="num">03</div><div><div class="title">교육 일정 및 운영 방식</div><div class="desc">5~6월 커리큘럼 로드맵 및 분반 구성</div></div></div>
+      <div class="item"><div class="num">04</div><div><div class="title">기대 성과 및 다음 단계</div><div class="desc">임원 AX 역량 내재화 목표와 실행 계획</div></div></div>
+    </div>
+  </div>
+  <div class="logo">:<span>Hansol</span></div>
+  <div class="num-page">02 / 06</div>
+</body></html>

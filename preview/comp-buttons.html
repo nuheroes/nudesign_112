@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>Buttons</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { width: 700px; height: 200px; font-family: 'Pretendard','Noto Sans KR',sans-serif; }
+  .row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: rgba(26,122,80,0.92); color: white; border: none;
+    border-radius: 12px; padding: 10px 20px;
+    font-family: inherit; font-size: 13px; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+    box-shadow: 0 4px 20px rgba(26,122,80,0.30); transition: all .2s;
+  }
+  .btn-primary:hover { background: rgba(26,122,80,1); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(26,122,80,0.40); }
+  .btn-glass {
+    background: rgba(255,255,255,0.7); backdrop-filter: blur(14px);
+    border: 1px solid var(--glass-border); color: var(--fg-1);
+    border-radius: 12px; padding: 10px 20px;
+    font-family: inherit; font-size: 13px; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  }
+  .btn-text {
+    background: transparent; border: none; color: #1a7a50;
+    font-family: inherit; font-size: 13px; font-weight: 700;
+    padding: 6px 4px; cursor: pointer; letter-spacing: 0.06em;
+  }
+  .ico { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--fg-3); margin-top: 6px; }
+</style></head>
+<body>
+  <div class="atmosphere"></div>
+  <div class="card-pad">
+    <div class="row">
+      <div>
+        <button class="btn-primary">
+          <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          시작하기
+        </button>
+        <div class="meta">primary</div>
+      </div>
+      <div>
+        <button class="btn-glass">
+          <svg class="ico" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          PPT 다운로드
+        </button>
+        <div class="meta">glass</div>
+      </div>
+      <div>
+        <button class="btn-text">자세히 보기 →</button>
+        <div class="meta">text</div>
+      </div>
+    </div>
+  </div>
+</body></html>

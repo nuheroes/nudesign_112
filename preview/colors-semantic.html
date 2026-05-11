@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>Semantic Brand Tints</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { width: 700px; height: 200px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .item { border-radius: 14px; padding: 16px; min-height: 120px;
+          background: rgba(255,255,255,0.65); backdrop-filter: blur(14px);
+          border: 1px solid var(--glass-border);
+          display: flex; flex-direction: column; gap: 10px; }
+  .demo { display: flex; align-items: center; gap: 10px; }
+  .pill { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+          padding: 4px 10px; border-radius: 6px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 6px 14px; border-radius: 8px; }
+  .meta .name { font-size: 12px; font-weight: 700; color: var(--fg-1); }
+  .meta .val  { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--fg-3); }
+  .gradient-chip { width: 36px; height: 36px; border-radius: 10px; background: var(--brand-gradient); }
+</style></head>
+<body>
+  <div class="atmosphere"></div>
+  <div class="card-pad">
+    <div class="grid">
+      <div class="item">
+        <div class="demo">
+          <span class="pill" style="background: rgba(26,122,80,0.12); color:#1a7a50;">RESEARCH</span>
+        </div>
+        <div class="meta"><div class="name">brand-tint-12</div><div class="val">rgba(26,122,80,.12)</div></div>
+      </div>
+      <div class="item">
+        <div class="demo">
+          <span class="badge" style="background: rgba(26,122,80,0.10); color:#1a7a50;">역량</span>
+        </div>
+        <div class="meta"><div class="name">brand-tint-10</div><div class="val">rgba(26,122,80,.10)</div></div>
+      </div>
+      <div class="item">
+        <div class="demo">
+          <div class="gradient-chip"></div>
+        </div>
+        <div class="meta"><div class="name">brand-gradient</div><div class="val">#1a7a50 → #2db88a</div></div>
+      </div>
+    </div>
+  </div>
+</body></html>

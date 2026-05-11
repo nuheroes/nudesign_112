@@ -1,0 +1,240 @@
+/* =========================================================
+   Hansol HCLP Design System — colors_and_type.css
+   Imports webfont, defines color + type tokens, and provides
+   semantic element styles (h1, h2, p, code, etc).
+   ========================================================= */
+
+/* Brand font — Pretendard (uploaded as variable TTF) */
+@font-face {
+  font-family: 'Pretendard';
+  src: url('fonts/PretendardVariable.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+/* Fallback: Noto Sans KR via Google for environments where the local TTF is not yet bundled */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+:root {
+  /* ── Brand palette ─────────────────────────────────────── */
+  --brand-green-900: #0f4a30;     /* deepest, hover-darken */
+  --brand-green-700: #1a7a50;     /* PRIMARY brand green */
+  --brand-green-500: #2db88a;     /* accent / gradient pair */
+  --brand-green-300: #8fd8b8;     /* light tint */
+  --brand-green-100: #c8e8d4;     /* atmospheric mint */
+
+  /* Brand gradient — used on icon chips, dots, divider accents */
+  --brand-gradient: linear-gradient(135deg, #1a7a50 0%, #2db88a 100%);
+  --brand-gradient-h: linear-gradient(90deg, #1a7a50 0%, #2db88a 100%);
+
+  /* ── Ink (foreground) ──────────────────────────────────── */
+  --fg-1: #0f2830;                /* primary text — deep teal-ink */
+  --fg-2: rgba(15,40,48,0.65);    /* body / secondary */
+  --fg-3: rgba(15,40,48,0.50);    /* tertiary, captions */
+  --fg-4: rgba(15,40,48,0.35);    /* hint / disabled */
+  --fg-on-brand: #ffffff;         /* on green */
+
+  /* ── Surfaces ──────────────────────────────────────────── */
+  --bg-page: #eef5f0;             /* solid fallback */
+  --bg-atmosphere-a: #dce8f0;     /* cool blue corner */
+  --bg-atmosphere-b: #eef5f0;     /* pale midpoint */
+  --bg-atmosphere-c: #c8e8d4;     /* mint corner */
+
+  /* Glass card surfaces (always over atmospheric bg) */
+  --glass-strong: rgba(255,255,255,0.72);  /* hero / end card */
+  --glass-medium: rgba(255,255,255,0.65);  /* content cards */
+  --glass-soft:   rgba(255,255,255,0.62);  /* timeline / list */
+  --glass-border: rgba(255,255,255,0.85);  /* 1px hairline */
+  --glass-blur-lg: 20px;
+  --glass-blur-md: 14px;
+  --glass-blur-sm: 12px;
+
+  /* Tinted brand chips & badges */
+  --brand-tint-12: rgba(26,122,80,0.12);
+  --brand-tint-10: rgba(26,122,80,0.10);
+  --brand-tint-22: rgba(26,122,80,0.22);
+  --brand-tint-18: rgba(26,122,80,0.18);
+
+  /* ── Shadow system ─────────────────────────────────────── */
+  --shadow-card-sm: 0 4px 16px rgba(0,0,0,0.04);
+  --shadow-card-md: 0 4px 20px rgba(0,0,0,0.04);
+  --shadow-card-lg: 0 8px 40px rgba(0,0,0,0.06);
+  --shadow-brand:   0 4px 20px rgba(26,122,80,0.30);
+  --shadow-brand-lg: 0 6px 24px rgba(26,122,80,0.40);
+  --shadow-dot:     0 0 0 3px rgba(26,122,80,0.15);
+
+  /* ── Radii ─────────────────────────────────────────────── */
+  --r-xs: 6px;       /* tag pill */
+  --r-sm: 8px;       /* badge */
+  --r-md: 10px;      /* icon chip */
+  --r-lg: 14px;      /* timeline card */
+  --r-xl: 16px;      /* content card */
+  --r-2xl: 18px;     /* index item */
+  --r-3xl: 20px;     /* big card */
+  --r-4xl: 28px;     /* hero/end card */
+  --r-full: 999px;
+
+  /* ── Spacing scale ─────────────────────────────────────── */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-7: 28px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+  --s-20: 80px;
+
+  /* ── Type tokens ───────────────────────────────────────── */
+  --font-sans: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', ui-monospace, Menlo, monospace;
+
+  /* Sizes (slide-scale: designed for 1280×720+ slides) */
+  --fs-display: 40px;     /* hero h1 */
+  --fs-h1: 36px;
+  --fs-h2: 34px;          /* slide title */
+  --fs-h3: 28px;          /* index header */
+  --fs-h4: 17px;          /* big-card title */
+  --fs-h5: 15px;          /* card title */
+  --fs-body: 15px;
+  --fs-body-sm: 13px;
+  --fs-caption: 12px;
+  --fs-label: 11px;       /* section label, ALL CAPS */
+  --fs-mini: 10px;        /* tag */
+
+  /* Weights */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-black: 900;
+
+  /* Letter spacing */
+  --tracking-tight: -0.02em;       /* display, h1, h2 */
+  --tracking-normal: 0;
+  --tracking-wide: 0.08em;          /* logo */
+  --tracking-wider: 0.10em;         /* end-card uppercase */
+  --tracking-widest: 0.14em;        /* section label */
+
+  /* Line heights */
+  --lh-tight: 1.25;
+  --lh-snug: 1.30;
+  --lh-normal: 1.60;
+  --lh-relaxed: 1.70;
+
+  /* ── Motion ────────────────────────────────────────────── */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);  /* default ease */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 200ms;
+  --dur-med: 600ms;
+  --dur-slow: 800ms;
+}
+
+/* ─── Atmospheric page background utility ─────────────────
+   Use as a sibling positioned absolute over slide root,
+   OR apply to body directly for full-bleed views.
+   ───────────────────────────────────────────────────────── */
+.hclp-bg-atmosphere,
+.bg-gradient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 60% at 20% 10%, rgba(180,210,230,0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 70% at 85% 85%, rgba(100,185,150,0.50) 0%, transparent 55%),
+    linear-gradient(135deg, var(--bg-atmosphere-a) 0%, var(--bg-atmosphere-b) 45%, var(--bg-atmosphere-c) 100%);
+}
+
+/* =========================================================
+   Semantic element defaults
+   Apply on a `.hclp` root so it doesn't leak into other pages
+   ========================================================= */
+.hclp,
+.hclp * {
+  box-sizing: border-box;
+}
+
+.hclp {
+  font-family: var(--font-sans);
+  color: var(--fg-1);
+  font-weight: var(--fw-regular);
+  -webkit-font-smoothing: antialiased;
+}
+
+.hclp h1 {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--lh-tight);
+  color: var(--fg-1);
+}
+
+.hclp h2 {
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--lh-tight);
+  color: var(--fg-1);
+}
+
+.hclp h3 {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+}
+
+.hclp h4 {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
+  color: var(--fg-1);
+}
+
+.hclp h5 {
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-bold);
+  color: var(--fg-1);
+}
+
+.hclp p {
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-light);
+  color: var(--fg-2);
+  line-height: var(--lh-relaxed);
+}
+
+.hclp small,
+.hclp .caption {
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-light);
+  color: var(--fg-3);
+}
+
+.hclp .section-label,
+.hclp .eyebrow {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--brand-green-700);
+}
+
+.hclp code,
+.hclp .mono {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+.hclp a {
+  color: var(--brand-green-700);
+  text-decoration: none;
+  border-bottom: 1px solid var(--brand-tint-22);
+  transition: border-color var(--dur-fast) var(--ease);
+}
+.hclp a:hover { border-bottom-color: var(--brand-green-700); }
+
+.hclp .text-accent { color: var(--brand-green-700); }
+.hclp .text-muted  { color: var(--fg-3); }

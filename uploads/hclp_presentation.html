@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCLP 교육 | Hansol</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #0a0a0a;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+  .slide.active {
+    display: flex;
+    opacity: 1;
+  }
+  .slide.fade-in {
+    animation: fadeIn 0.6s ease forwards;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── 공통 배경 그라디언트 ─── */
+  .bg-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 20% 10%, rgba(180,210,230,0.55) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 70% at 85% 85%, rgba(100,185,150,0.5) 0%, transparent 55%),
+      linear-gradient(135deg, #dce8f0 0%, #eef5f0 45%, #c8e8d4 100%);
+  }
+
+  /* ─── 로고 ─── */
+  .logo {
+    position: absolute;
+    bottom: 32px;
+    left: 44px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #1a3a4a;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+  .logo span { color: #1a7a50; }
+
+  /* ─── 슬라이드 번호 ─── */
+  .slide-num {
+    position: absolute;
+    bottom: 32px;
+    right: 44px;
+    font-size: 12px;
+    color: rgba(30,50,60,0.45);
+    font-weight: 300;
+  }
+
+  /* ─── 진행 바 ─── */
+  .progress-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #1a7a50, #2db88a);
+    transition: width 0.5s ease;
+    z-index: 100;
+  }
+
+  /* ─── 네비게이션 힌트 ─── */
+  .nav-hint {
+    position: fixed;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: rgba(30,50,60,0.35);
+    font-family: 'Noto Sans KR', sans-serif;
+    pointer-events: none;
+    z-index: 100;
+    transition: opacity 0.3s;
+  }
+
+  /* ════════════════════════════
+     슬라이드 1: 타이틀
+  ════════════════════════════ */
+  #slide-1 {
+    align-items: center;
+    justify-content: center;
+  }
+  #slide-1 .card {
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(20px);
+    border-radius: 28px;
+    padding: 60px 90px;
+    text-align: center;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+    border: 1px solid rgba(255,255,255,0.9);
+    animation: fadeIn 0.8s ease 0.2s both;
+  }
+  #slide-1 .card h1 {
+    font-size: 40px;
+    font-weight: 700;
+    color: #0f2830;
+    letter-spacing: -0.02em;
+  }
+  #slide-1 .card .sub {
+    margin-top: 12px;
+    font-size: 15px;
+    color: rgba(15,40,48,0.5);
+    font-weight: 300;
+  }
+
+  /* ════════════════════════════
+     슬라이드 2: 인덱스
+  ════════════════════════════ */
+  #slide-2 {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0;
+  }
+  #slide-2 .index-header {
+    margin-bottom: 36px;
+    animation: fadeIn 0.6s ease 0.1s both;
+  }
+  #slide-2 .index-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0f2830;
+    letter-spacing: -0.02em;
+  }
+  #slide-2 .index-header .line {
+    margin-top: 8px;
+    width: 36px;
+    height: 3px;
+    background: linear-gradient(90deg, #1a7a50, #2db88a);
+    border-radius: 2px;
+  }
+  #slide-2 .index-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    width: 720px;
+    max-width: 90vw;
+  }
+  #slide-2 .index-item {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(16px);
+    border-radius: 18px;
+    padding: 28px 32px;
+    border: 1px solid rgba(255,255,255,0.85);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    animation: fadeIn 0.6s ease both;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+  #slide-2 .index-item:nth-child(1) { animation-delay: 0.2s; }
+  #slide-2 .index-item:nth-child(2) { animation-delay: 0.3s; }
+  #slide-2 .index-item:nth-child(3) { animation-delay: 0.4s; }
+  #slide-2 .index-item:nth-child(4) { animation-delay: 0.5s; }
+  #slide-2 .index-num {
+    font-size: 30px;
+    font-weight: 900;
+    color: rgba(26,122,80,0.18);
+    line-height: 1;
+    min-width: 32px;
+  }
+  #slide-2 .index-text .title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f2830;
+    margin-bottom: 4px;
+  }
+  #slide-2 .index-text .desc {
+    font-size: 13px;
+    color: rgba(15,40,48,0.5);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ════════════════════════════
+     슬라이드 3~6: 본문 공통
+  ════════════════════════════ */
+  .content-slide {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 60px 80px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #1a7a50;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    animation: fadeIn 0.5s ease 0.05s both;
+  }
+  .slide-title {
+    font-size: 34px;
+    font-weight: 700;
+    color: #0f2830;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    line-height: 1.25;
+    animation: fadeIn 0.5s ease 0.1s both;
+  }
+  .slide-subtitle {
+    font-size: 15px;
+    color: rgba(15,40,48,0.5);
+    font-weight: 300;
+    margin-bottom: 40px;
+    animation: fadeIn 0.5s ease 0.15s both;
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(26,122,80,0.25), transparent);
+    margin-bottom: 40px;
+    animation: fadeIn 0.5s ease 0.18s both;
+  }
+  .content-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+    animation: fadeIn 0.6s ease 0.25s both;
+  }
+  .content-card {
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(14px);
+    border-radius: 16px;
+    padding: 24px 26px;
+    border: 1px solid rgba(255,255,255,0.85);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  }
+  .content-card .icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #1a7a50, #2db88a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .content-card .icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: white;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .content-card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f2830;
+    margin-bottom: 10px;
+  }
+  .content-card p {
+    font-size: 13px;
+    color: rgba(15,40,48,0.6);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* 2열 레이아웃 슬라이드 */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+    animation: fadeIn 0.6s ease 0.25s both;
+  }
+  .big-card {
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(14px);
+    border-radius: 20px;
+    padding: 32px 36px;
+    border: 1px solid rgba(255,255,255,0.85);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+  .big-card .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    background: rgba(26,122,80,0.12);
+    color: #1a7a50;
+    border-radius: 6px;
+    padding: 4px 10px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .big-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0f2830;
+    margin-bottom: 12px;
+  }
+  .big-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .big-card ul li {
+    font-size: 13px;
+    color: rgba(15,40,48,0.65);
+    line-height: 1.6;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-weight: 300;
+  }
+  .big-card ul li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #1a7a50;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  /* 타임라인 슬라이드 */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    animation: fadeIn 0.6s ease 0.25s both;
+  }
+  .timeline-item {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+  }
+  .timeline-left {
+    width: 120px;
+    padding: 16px 24px 16px 0;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .timeline-left .month {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a7a50;
+  }
+  .timeline-left .week {
+    font-size: 11px;
+    color: rgba(15,40,48,0.4);
+    font-weight: 300;
+  }
+  .timeline-center {
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a7a50, #2db88a);
+    margin-top: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(26,122,80,0.15);
+  }
+  .timeline-line {
+    flex: 1;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(26,122,80,0.3), rgba(26,122,80,0.05));
+  }
+  .timeline-right {
+    flex: 1;
+    padding: 12px 0 24px 16px;
+  }
+  .timeline-card {
+    background: rgba(255,255,255,0.62);
+    backdrop-filter: blur(12px);
+    border-radius: 14px;
+    padding: 18px 22px;
+    border: 1px solid rgba(255,255,255,0.82);
+  }
+  .timeline-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f2830;
+    margin-bottom: 6px;
+  }
+  .timeline-card p {
+    font-size: 12px;
+    color: rgba(15,40,48,0.55);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* 키포인트 슬라이드 */
+  .key-points {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: 100%;
+    animation: fadeIn 0.6s ease 0.25s both;
+  }
+  .key-point-item {
+    background: rgba(255,255,255,0.62);
+    backdrop-filter: blur(14px);
+    border-radius: 16px;
+    padding: 22px 28px;
+    border: 1px solid rgba(255,255,255,0.82);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .key-point-num {
+    font-size: 22px;
+    font-weight: 900;
+    color: rgba(26,122,80,0.22);
+    width: 32px;
+    flex-shrink: 0;
+  }
+  .key-point-content h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f2830;
+    margin-bottom: 4px;
+  }
+  .key-point-content p {
+    font-size: 13px;
+    color: rgba(15,40,48,0.55);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .key-point-badge {
+    margin-left: auto;
+    font-size: 11px;
+    font-weight: 700;
+    background: rgba(26,122,80,0.1);
+    color: #1a7a50;
+    border-radius: 8px;
+    padding: 6px 14px;
+    flex-shrink: 0;
+  }
+
+  /* ─── 마지막 슬라이드 ─── */
+  #slide-last {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0;
+  }
+  #slide-last .end-card {
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(20px);
+    border-radius: 28px;
+    padding: 64px 96px;
+    text-align: center;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+    border: 1px solid rgba(255,255,255,0.9);
+    animation: fadeIn 0.8s ease 0.2s both;
+  }
+  #slide-last .end-card .thank {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(15,40,48,0.45);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  #slide-last .end-card h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #0f2830;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+  #slide-last .end-card .accent {
+    color: #1a7a50;
+  }
+  #slide-last .end-card .restart {
+    margin-top: 32px;
+    font-size: 12px;
+    color: rgba(15,40,48,0.3);
+    font-weight: 300;
+  }
+</style>
+</head>
+<body>
+
+<!-- 진행 바 -->
+<div class="progress-bar" id="progressBar" style="width: 16.66%"></div>
+<div class="nav-hint" id="navHint">클릭하여 다음 슬라이드로 이동</div>
+
+<!-- ─── 슬라이드 1: 타이틀 ─── -->
+<div class="slide active fade-in" id="slide-1">
+  <div class="bg-gradient"></div>
+  <div class="card">
+    <h1>HCLP 교육</h1>
+    <div class="sub">Hansol Corporate Leadership Program · AI Transformation Track</div>
+  </div>
+  <div class="logo">:<span>Hansol</span></div>
+  <div class="slide-num">01 / 06</div>
+</div>
+
+<!-- ─── 슬라이드 2: 인덱스 ─── -->
+<div class="slide" id="slide-2">
+  <div class="bg-gradient"></div>
+  <div class="index-header">
+    <h2>목차</h2>
+    <div class="line"></div>
+  </div>
+  <div class="index-grid">
+    <div class="index-item">
+      <div class="index-num">01</div>
+      <div class="index-text">
+        <div class="title">교육 개요 및 방향성</div>
+        <div class="desc">HCLP AX MBA 프로그램 목적과 핵심 철학</div>
+      </div>
+    </div>
+    <div class="index-item">
+      <div class="index-num">02</div>
+      <div class="index-text">
+        <div class="title">AI 에이전트 실습 트랙</div>
+        <div class="desc">업무 자동화를 위한 4가지 에이전트 활용법</div>
+      </div>
+    </div>
+    <div class="index-item">
+      <div class="index-num">03</div>
+      <div class="index-text">
+        <div class="title">교육 일정 및 운영 방식</div>
+        <div class="desc">5~6월 커리큘럼 로드맵 및 분반 구성</div>
+      </div>
+    </div>
+    <div class="index-item">
+      <div class="index-num">04</div>
+      <div class="index-text">
+        <div class="title">기대 성과 및 다음 단계</div>
+        <div class="desc">임원 AX 역량 내재화 목표와 실행 계획</div>
+      </div>
+    </div>
+  </div>
+  <div class="logo">:<span>Hansol</span></div>
+  <div class="slide-num">02 / 06</div>
+</div>
+
+<!-- ─── 슬라이드 3: 교육 개요 ─── -->
+<div class="slide content-slide" id="slide-3">
+  <div class="bg-gradient"></div>
+  <div class="section-label">Section 01</div>
+  <div class="slide-title">교육 개요 및 방향성</div>
+  <div class="slide-subtitle">AI 시대, 임원이 직접 경험하는 전환의 언어</div>
+  <div class="divider"></div>
+  <div class="content-grid">
+    <div class="content-card">
+      <div class="icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>프로그램 목적</h3>
+      <p>임원 레벨에서 AI를 단순 도구가 아닌 의사결정 파트너로 활용하는 역량을 내재화합니다.</p>
+    </div>
+    <div class="content-card">
+      <div class="icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <h3>핵심 철학</h3>
+      <p>도구 습득보다 AI 사고력 함양에 집중합니다. 생각의 방식을 바꾸는 것이 먼저입니다.</p>
+    </div>
+    <div class="content-card">
+      <div class="icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3>대상 및 규모</h3>
+      <p>한솔그룹 임원진 대상, HCLP AX MBA 과정. 소규모 집중형으로 운영하여 실습 밀도를 높입니다.</p>
+    </div>
+  </div>
+  <div class="logo">:<span>Hansol</span></div>
+  <div class="slide-num">03 / 06</div>
+</div>
+
+<!-- ─── 슬라이드 4: AI 에이전트 트랙 ─── -->
+<div class="slide content-slide" id="slide-4">
+  <div class="bg-gradient"></div>
+  <div class="section-label">Section 02</div>
+  <div class="slide-title">AI 에이전트 실습 트랙</div>
+  <div class="slide-subtitle">4가지 에이전트로 업무 방식을 재설계하다</div>
+  <div class="divider"></div>
+  <div class="two-col">
+    <div class="big-card">
+      <div class="tag">Research Agent</div>
+      <h3>정보 수집 & 분석 에이전트</h3>
+      <ul>
+        <li>시장 동향·경쟁사 정보를 자동 수집</li>
+        <li>보고서 초안을 AI가 구조화하여 제공</li>
+        <li>임원 의사결정용 요약 대시보드 생성</li>
+      </ul>
+    </div>
+    <div class="big-card">
+      <div class="tag">Writing Agent</div>
+      <h3>문서 작성 & 커뮤니케이션 에이전트</h3>
+      <ul>
+        <li>회의록·기안서·보도자료 자동 초안화</li>
+        <li>어조·형식을 조직 스타일에 맞게 조정</li>
+        <li>다국어 번역 및 요약 즉시 제공</li>
+      </ul>
+    </div>
+    <div class="big-card">
+      <div class="tag">Decision Agent</div>
+      <h3>의사결정 지원 에이전트</h3>
+      <ul>
+        <li>복잡한 시나리오 시뮬레이션 수행</li>
+        <li>리스크·수익성 분석 자동화</li>
+        <li>데이터 기반 대안 제시 및 추천</li>
+      </ul>
+    </div>
+    <div class="big-card">
+      <div class="tag">Process Agent</div>
+      <h3>업무 프로세스 자동화 에이전트</h3>
+      <ul>
+        <li>반복 업무 워크플로 자동 설계</li>
+        <li>부서 간 협업 프로세스 AI 연결</li>
+        <li>이메일·일정·승인 자동 처리</li>
+      </ul>
+    </div>
+  </div>
+  <div class="logo">:<span>Hansol</span></div>
+  <div class="slide-num">04 / 06</div>
+</div>
+
+<!-- ─── 슬라이드 5: 교육 일정 ─── -->
+<div class="slide content-slide" id="slide-5">
+  <div class="bg-gradient"></div>
+  <div class="section-label">Section 03</div>
+  <div class="slide-title">교육 일정 및 운영 방식</div>
+  <div class="slide-subtitle">5~6월 집중 커리큘럼 로드맵</div>
+  <div class="divider"></div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <div class="month">5월</div>
+        <div class="week">1~2주차</div>
+      </div>
+      <div class="timeline-center">
+        <div class="timeline-dot"></div>
+        <div class="timeline-line"></div>
+      </div>
+      <div class="timeline-right">
+        <div class="timeline-card">
+          <h4>AI 기초 & 프롬프트 엔지니어링</h4>
+          <p>LLM 작동 원리 이해 · 효과적인 프롬프트 설계 · 실무 적용 워크숍</p>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <div class="month">5월</div>
+        <div class="week">3~4주차</div>
+      </div>
+      <div class="timeline-center">
+        <div class="timeline-dot"></div>
+        <div class="timeline-line"></div>
+      </div>
+      <div class="timeline-right">
+        <div class="timeline-card">
+          <h4>AI 에이전트 실습 (Research · Writing)</h4>
+          <p>정보 수집 자동화 · 문서 작성 에이전트 직접 설계 및 운용 실습</p>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <div class="month">6월</div>
+        <div class="week">1~2주차</div>
+      </div>
+      <div class="timeline-center">
+        <div class="timeline-dot"></div>
+        <div class="timeline-line"></div>
+      </div>
+      <div class="timeline-right">
+        <div class="timeline-card">
+          <h4>AI 에이전트 심화 (Decision · Process)</h4>
+          <p>의사결정 지원 AI · 업무 프로세스 자동화 실전 설계 프로젝트</p>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <div class="month">6월</div>
+        <div class="week">3~4주차</div>
+      </div>
+      <div class="timeline-center">
+        <div class="timeline-dot"></div>
+      </div>
+      <div class="timeline-right">
+        <div class="timeline-card">
+          <h4>성과 발표 & AX 전략 수립</h4>
+          <p>팀별 프로젝트 발표 · 현업 적용 계획 수립 · 지속 학습 로드맵 설계</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="logo">:<span>Hansol</span></div>
+  <div class="slide-num">05 / 06</div>
+</div>
+
+<!-- ─── 슬라이드 6: 기대 성과 ─── -->
+<div class="slide content-slide" id="slide-6">
+  <div class="bg-gradient"></div>
+  <div class="section-label">Section 04</div>
+  <div class="slide-title">기대 성과 및 다음 단계</div>
+  <div class="slide-subtitle">교육 이후 임원이 경험하게 될 변화</div>
+  <div class="divider"></div>
+  <div class="key-points">
+    <div class="key-point-item">
+      <div class="key-point-num">01</div>
+      <div class="key-point-content">
+        <h4>AI 자율 활용 역량 내재화</h4>
+        <p>별도 지원 없이 임원 스스로 AI 에이전트를 업무에 연결하고 운용할 수 있는 상태 도달</p>
+      </div>
+      <div class="key-point-badge">역량</div>
+    </div>
+    <div class="key-point-item">
+      <div class="key-point-num">02</div>
+      <div class="key-point-content">
+        <h4>현업 적용 프로젝트 결과물 확보</h4>
+        <p>교육 기간 내 실제 업무 프로세스 1개 이상을 AI로 자동화한 프로토타입 완성</p>
+      </div>
+      <div class="key-point-badge">산출물</div>
+    </div>
+    <div class="key-point-item">
+      <div class="key-point-num">03</div>
+      <div class="key-point-content">
+        <h4>조직 내 AX 확산 리더십 강화</h4>
+        <p>임원이 직접 팀원에게 AI 활용 방향성을 제시하고 문화를 견인하는 역할 수행</p>
+      </div>
+      <div class="key-point-badge">영향력</div>
+    </div>
+  </div>
+  <div class="logo">:<span>Hansol</span></div>
+  <div class="slide-num">06 / 06</div>
+</div>
+
+<!-- ─── 마지막: 엔딩 ─── -->
+<div class="slide" id="slide-last">
+  <div class="bg-gradient"></div>
+  <div class="end-card">
+    <div class="thank">Thank you</div>
+    <h2>AI와 함께,<br><span class="accent">더 빠른 한솔</span>을 만들겠습니다.</h2>
+    <div class="restart">처음으로 돌아가려면 클릭하세요</div>
+  </div>
+  <div class="logo">:<span>Hansol</span></div>
+</div>
+
+<script>
+  const slides = ['slide-1','slide-2','slide-3','slide-4','slide-5','slide-6','slide-last'];
+  let current = 0;
+  const total = slides.length;
+  const bar = document.getElementById('progressBar');
+  const hint = document.getElementById('navHint');
+
+  function goTo(idx) {
+    const prev = document.getElementById(slides[current]);
+    prev.classList.remove('active','fade-in');
+    prev.style.display = 'none';
+    current = ((idx % total) + total) % total;
+    const next = document.getElementById(slides[current]);
+    next.style.display = 'flex';
+    setTimeout(() => { next.classList.add('active','fade-in'); }, 10);
+    bar.style.width = ((current + 1) / total * 100) + '%';
+    if(current === total - 1) hint.textContent = '처음으로 돌아가려면 클릭';
+    else hint.textContent = '클릭하여 다음 슬라이드로 이동';
+  }
+
+  document.body.addEventListener('click', () => goTo(current + 1));
+
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') goTo(current + 1);
+    if(e.key === 'ArrowLeft' || e.key === 'ArrowUp') goTo(current - 1);
+  });
+
+  setTimeout(() => { hint.style.opacity = '0'; }, 4000);
+  document.body.addEventListener('mousemove', () => { hint.style.opacity = '0.7'; });
+</script>
+
+<style>
+  .dl-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 200;
+    background: rgba(26,122,80,0.92);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(26,122,80,0.3);
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .dl-btn:hover { background: rgba(26,122,80,1); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(26,122,80,0.4); }
+  .dl-btn:active { transform: translateY(0); }
+  .dl-icon { width: 16px; height: 16px; }
+</style>
+<button class="dl-btn" onclick="downloadPptx()">
+  <svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+    <polyline points="7 10 12 15 17 10"/>
+    <line x1="12" y1="15" x2="12" y2="3"/>
+  </svg>
+  PPT 다운로드
+</button>
+<script>
+function downloadPptx() {
+  const b64 = '';
+  const binary = atob(b64);
+  const bytes = new Uint8Array(binary.length);
+  for(let i=0;i<binary.length;i++) bytes[i]=binary.charCodeAt(i);
+  const blob = new Blob([bytes], {type:'application/vnd.openxmlformats-officedocument.presentationml.presentation'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'HCLP_교육.pptx';
+  a.click();
+}
+</script>
+</body>
+</html>

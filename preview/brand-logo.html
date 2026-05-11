@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>Brand Logo</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { width: 700px; height: 200px; font-family: 'Pretendard','Noto Sans KR',sans-serif; }
+  .row { display: flex; gap: 24px; align-items: stretch; }
+  .item { flex: 1; padding: 20px; border-radius: 16px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 10px; min-height: 120px; }
+  .light { background: rgba(255,255,255,0.7); backdrop-filter: blur(14px); border: 1px solid var(--glass-border); }
+  .dark  { background: #0f2830; }
+  .logo { font-size: 22px; font-weight: 700; letter-spacing: 0.06em; display: inline-flex; gap: 2px; }
+  .logo .colon { color: #1a7a50; }
+  .logo.on-light { color: #1a3a4a; }
+  .logo.on-light .name { color: #1a3a4a; }
+  .logo.on-light .accent { color: #1a7a50; }
+  .logo.on-dark  { color: #fff; }
+  .logo.on-dark .name { color: #fff; }
+  .logo.on-dark .accent { color: #2db88a; }
+  .meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--fg-3); }
+  .meta.on-dark { color: rgba(255,255,255,0.5); }
+</style></head>
+<body>
+  <div class="atmosphere"></div>
+  <div class="card-pad">
+    <div class="row">
+      <div class="item light">
+        <div class="logo on-light"><span class="colon">:</span><span class="accent">Hansol</span></div>
+        <div class="meta">on light · primary</div>
+      </div>
+      <div class="item dark">
+        <div class="logo on-dark"><span class="accent">:</span><span class="name">Hansol</span></div>
+        <div class="meta on-dark">on dark · accent green</div>
+      </div>
+    </div>
+  </div>
+</body></html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>Ink / Foreground</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { width: 700px; height: 200px; }
+  .row2 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .ink { border-radius: 14px; padding: 16px; height: 130px;
+         background: rgba(255,255,255,0.65); backdrop-filter: blur(14px);
+         border: 1px solid var(--glass-border);
+         display: flex; flex-direction: column; justify-content: space-between; }
+  .chip { width: 100%; height: 50px; border-radius: 10px; }
+  .meta .label { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-1); }
+  .meta .val   { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--fg-3); margin-top: 2px; }
+</style></head>
+<body>
+  <div class="atmosphere"></div>
+  <div class="card-pad">
+    <div class="row2">
+      <div class="ink"><div class="chip" style="background:#0f2830"></div>
+        <div class="meta"><div class="label">fg-1</div><div class="val">#0f2830</div></div></div>
+      <div class="ink"><div class="chip" style="background:rgba(15,40,48,0.65)"></div>
+        <div class="meta"><div class="label">fg-2</div><div class="val">rgba 15·40·48 / .65</div></div></div>
+      <div class="ink"><div class="chip" style="background:rgba(15,40,48,0.50)"></div>
+        <div class="meta"><div class="label">fg-3</div><div class="val">rgba 15·40·48 / .50</div></div></div>
+      <div class="ink"><div class="chip" style="background:rgba(15,40,48,0.35)"></div>
+        <div class="meta"><div class="label">fg-4</div><div class="val">rgba 15·40·48 / .35</div></div></div>
+    </div>
+  </div>
+</body></html>

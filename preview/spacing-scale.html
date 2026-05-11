@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>Spacing Scale</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { width: 700px; height: 240px; }
+  .row { display: flex; flex-direction: column; gap: 8px; }
+  .step { display: flex; align-items: center; gap: 14px; }
+  .bar { background: var(--brand-gradient); height: 8px; border-radius: 4px; }
+  .label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--fg-2); width: 110px; flex-shrink: 0; }
+  .label b { color: var(--fg-1); font-weight: 700; }
+</style></head>
+<body>
+  <div class="atmosphere"></div>
+  <div class="card-pad">
+    <div class="row">
+      <div class="step"><div class="label"><b>s-1</b>  4 px</div><div class="bar" style="width:4px"></div></div>
+      <div class="step"><div class="label"><b>s-2</b>  8 px</div><div class="bar" style="width:8px"></div></div>
+      <div class="step"><div class="label"><b>s-3</b>  12 px</div><div class="bar" style="width:12px"></div></div>
+      <div class="step"><div class="label"><b>s-4</b>  16 px</div><div class="bar" style="width:16px"></div></div>
+      <div class="step"><div class="label"><b>s-5</b>  20 px</div><div class="bar" style="width:20px"></div></div>
+      <div class="step"><div class="label"><b>s-6</b>  24 px</div><div class="bar" style="width:24px"></div></div>
+      <div class="step"><div class="label"><b>s-8</b>  32 px</div><div class="bar" style="width:32px"></div></div>
+      <div class="step"><div class="label"><b>s-10</b> 40 px</div><div class="bar" style="width:40px"></div></div>
+      <div class="step"><div class="label"><b>s-12</b> 48 px</div><div class="bar" style="width:48px"></div></div>
+      <div class="step"><div class="label"><b>s-16</b> 64 px</div><div class="bar" style="width:64px"></div></div>
+    </div>
+  </div>
+</body></html>

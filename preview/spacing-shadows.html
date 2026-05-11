@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>Shadow & Elevation</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { width: 700px; height: 240px; }
+  .row { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .box { width: 100%; height: 90px; background: rgba(255,255,255,0.85); border-radius: 14px; border: 1px solid var(--glass-border); }
+  .meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--fg-2); text-align: center; line-height: 1.5; }
+  .meta b { color: var(--fg-1); font-weight: 700; display:block; }
+</style></head>
+<body>
+  <div class="atmosphere"></div>
+  <div class="card-pad">
+    <div class="row">
+      <div class="item">
+        <div class="box" style="box-shadow: 0 4px 16px rgba(0,0,0,0.04)"></div>
+        <div class="meta"><b>card-sm</b>0 4 16 / .04</div>
+      </div>
+      <div class="item">
+        <div class="box" style="box-shadow: 0 4px 20px rgba(0,0,0,0.04)"></div>
+        <div class="meta"><b>card-md</b>0 4 20 / .04</div>
+      </div>
+      <div class="item">
+        <div class="box" style="box-shadow: 0 8px 40px rgba(0,0,0,0.06)"></div>
+        <div class="meta"><b>card-lg</b>0 8 40 / .06</div>
+      </div>
+      <div class="item">
+        <div class="box" style="background: rgba(26,122,80,0.92); box-shadow: 0 4px 20px rgba(26,122,80,0.30)"></div>
+        <div class="meta"><b>brand</b>0 4 20 / 30%</div>
+      </div>
+    </div>
+  </div>
+</body></html>
