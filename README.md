@@ -1,6 +1,6 @@
-# Hansol HCLP Design System
+# Design System
 
-A soft, modern, glass-morphic identity for **Hansol Group** corporate-leadership communications — built around the *HCLP (Hansol Corporate Leadership Program) AX MBA Track* presentation language.
+A soft, modern, glass-morphic identity for **1 Group** corporate-leadership communications — built around the *HCLP (1 Corporate Leadership Program) AX MBA Track* presentation language.
 
 ## Index
 
@@ -13,7 +13,7 @@ A soft, modern, glass-morphic identity for **Hansol Group** corporate-leadership
 
 ## Sources
 
-The system was derived from a single attached source: a 6-slide HCLP onboarding deck (`reference/hclp_presentation.html`) for Hansol's executive AI-transformation track. The user supplied **Pretendard Variable** as the brand font. No official Hansol brand kit (logo SVG, illustration set) was attached — see *Caveats*.
+The system was derived from a single attached source: a 6-slide HCLP onboarding deck (`reference/hclp_presentation.html`) for 1's executive AI-transformation track. The user supplied **Pretendard Variable** as the brand font. No official 1 brand kit (logo SVG, illustration set) was attached — see *Caveats*.
 
 ---
 
@@ -87,14 +87,14 @@ Two corner glows over a diagonal pastel gradient — soft, oxygenated, faintly p
 3. **Cards in grids of 2, 3, or 4.** Never odd counts; never single hero cards mixed with grid cards on the same slide.
 4. **Numerals as decoration.** When numbering items (01, 02, 03), make the number **30 px / 900 / `rgba(26,122,80,.18)`** — big, faded, structural, not loud.
 5. **Divider rule.** Each section title is followed by a divider — either a 1-px gradient horizontal line, or a 36×3-px gradient accent bar. Never a solid grey rule.
-6. **Lower-thirds.** Bottom-left holds the `:Hansol` logo (16 px / 700 / `0.08em` tracking). Bottom-right holds the slide counter (`03 / 06`, 14 px / 300 / 45% ink).
+6. **Lower-thirds.** Bottom-left holds the `:1` logo (16 px / 700 / `0.08em` tracking). Bottom-right holds the slide counter (`03 / 06`, 14 px / 300 / 45% ink).
 
 ---
 
 ## Caveats
 
 - The system was reverse-engineered from a **single source deck**. Vocabulary outside that deck (form controls, charts, tables, data viz, error states) is **not yet defined** — extrapolate cautiously and ask the user.
-- The wordmark `:Hansol` is a typographic stand-in. The real Hansol corporate logo was not provided.
-- Iconography uses Lucide-family generics. No proprietary Hansol icon set was provided.
+- The wordmark `:1` is a typographic stand-in. The real 1 corporate logo was not provided.
+- Iconography uses Lucide-family generics. No proprietary 1 icon set was provided.
 - All Korean copy in `slides/` and `preview/` is **example content** lifted from the source — replace before publishing.
 - The system has been validated for **slide decks**. Marketing pages, product UI, or email templates would need additional patterns (forms, dense tables, mobile breakpoints) layered on top.
